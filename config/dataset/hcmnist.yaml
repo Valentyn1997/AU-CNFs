@@ -1,0 +1,9 @@
+# @package _global_
+dataset:
+  _target_: src.data.HCMNIST
+  name: hcmnist
+  collection: False
+  train_test_splitted: True
+
+model:
+  dim_cov: 785

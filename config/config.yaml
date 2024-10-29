@@ -1,0 +1,29 @@
+# Dataset for training / evaluation -- specific values should be filled for each dataset
+dataset:
+  collection: ???                   # True for ihdp
+  train_test_splitted: ???
+  test_size: 0.2                    # train/test split ratio
+  n_shuffle_splits: 1
+  dataset_ix:                       # dataset index for ihdp
+
+# Model specific parameters
+model:
+  dim_cov: ???                      # will be defined with +dataset=...
+  tune_hparams: ???                 # will be defined with +model=...
+  tune_type: ???                    # will be defined with +model=...
+  hparams_grid:
+  tune_range:
+
+  n_delta: 50
+
+exp:
+  seed: 10
+  device: cpu
+  logging: True                     # Logging to MlFlow
+  mlflow_uri: http://127.0.0.1:5001 # MlFlow server is located on
+
+# Hydra defaults
+defaults:
+  - _self_
+  - override hydra/hydra_logging: colorlog
+  - override hydra/job_logging: colorlog

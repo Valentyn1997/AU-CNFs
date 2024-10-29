@@ -1,0 +1,4 @@
+# @package _global_
+model:
+  sd_x: 20            # conditional kernel smoothness, \sigma_k
+  eps: 1           # regularization parameter

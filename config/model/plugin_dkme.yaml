@@ -1,0 +1,29 @@
+# @package _global_
+model:
+  _target_: src.models.plugins.PluginDKME
+  name: plugin_dkme
+
+  # DKME hparams
+  sd_x: ???                      # conditional kernel smoothness, \sigma_k
+  eps: ???                       # regularization parameter
+
+  # Tuning
+  tune_hparams: False
+  tune_range: 1
+  tune_type: grid_search
+  hparams_grid:
+    sd_x:
+      - 0.0001
+      - 0.001
+      - 0.01
+      - 0.1
+      - 1
+      - 10
+      - 20
+    eps:
+      - 0.0001
+      - 0.001
+      - 0.01
+      - 0.1
+      - 1
+      - 10

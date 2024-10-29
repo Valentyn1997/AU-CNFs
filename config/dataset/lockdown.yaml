@@ -1,0 +1,9 @@
+# @package _global_
+dataset:
+  _target_: src.data.Lockdown
+  name: lockdown
+  collection: False
+  train_test_splitted: False
+  n_runs: 10
+
+  dim_cov: ${model.dim_cov}

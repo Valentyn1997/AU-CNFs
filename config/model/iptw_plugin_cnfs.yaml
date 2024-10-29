@@ -1,0 +1,44 @@
+# @package _global_
+model:
+  _target_: src.models.plugins.IPTWPluginCNFs
+  name: iptw_plugin_cnfs
+
+  nuisance_hid_dim_multiplier: 10    # ratio between the dimentionalities of the representation and the outcome
+
+  # nuisance hparams
+  nuisance_count_bins: ???           # number of knots for nuisance, n_{\text{knots,N}}
+  noise_std_X: ???                   # noise regularization for covariates, \sigma^2_x
+  noise_std_Y: ???                   # noise regularization for outcomes, \sigma^2_y
+  nuisance_lr: ???                   # learning rate for the nuisance flow (CNF), \eta_\text{N}
+  batch_size: ???                    # batch size for the nuisance network, b_N
+
+  num_epochs: 200                   # n_{\text{iter,N}}
+  num_burn_in_epochs: 0
+  prop_alpha: 1.0                   # \alpha
+  clip_prop: 0.05                   # drop observations with too low propensity (for the IPTW / A-IPTW objective)
+
+  # Tuning
+  tune_hparams: False
+  tune_range: 50                     # number of trials for random search
+  tune_type: choice
+  hparams_grid:
+    nuisance_count_bins:
+      - 5
+      - 10
+      - 20
+    noise_std_X:
+      - 0.0
+      - 0.01
+      - 0.05
+      - 0.1
+    noise_std_Y:
+      - 0.0
+      - 0.01
+      - 0.05
+      - 0.1
+    nuisance_lr:
+      - 1e-3
+      - 5e-3
+    batch_size:
+      - 32
+      - 64

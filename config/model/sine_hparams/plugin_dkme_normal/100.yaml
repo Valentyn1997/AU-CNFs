@@ -1,0 +1,8 @@
+# @package _global_
+model:
+  sd_x: 1            # conditional kernel smoothness, \sigma_k
+  eps: 0.1           # regularization parameter
+
+dataset:
+  n_samples_train: 100
+  mode: normal

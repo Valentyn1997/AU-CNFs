@@ -1,0 +1,51 @@
+# @package _global_
+model:
+  _target_: src.models.two_step_estimators.CovariateAdjustedCNFs
+  name: ca_cnfs
+
+  nuisance_hid_dim_multiplier: 10    # ratio between the dimentionalities of the representation and the outcome
+
+  # nuisance hparams
+  nuisance_count_bins: ???           # number of knots for nuisance, n_{\text{knots,N}}
+  noise_std_X: ???                   # noise regularization for covariates, \sigma^2_x
+  noise_std_Y: ???                   # noise regularization for outcomes, \sigma^2_y
+  nuisance_lr: ???                   # learning rate for the nuisance flow (CNF), \eta_\text{N}
+  batch_size: ???                    # batch size for the nuisance network, b_N
+
+  num_epochs: 200                   # n_{\text{iter,N}}
+
+  # target hparams
+  target_mode: cdf
+  target_count_bins:
+  target_lr: 0.005
+  target_batch_size: 64
+  target_hid_layers: 1
+  target_num_epochs: ${model.num_epochs}
+  target_noise_std_X: ${model.noise_std_X}
+  target_gamma: 0.995                  # EMA of model weights for target
+
+  # Tuning
+  tune_hparams: False
+  tune_range: 50                     # number of trials for random search
+  tune_type: choice
+  hparams_grid:
+    nuisance_count_bins:
+      - 5
+      - 10
+      - 20
+    noise_std_X:
+      - 0.0
+      - 0.01
+      - 0.05
+      - 0.1
+    noise_std_Y:
+      - 0.0
+      - 0.01
+      - 0.05
+      - 0.1
+    nuisance_lr:
+      - 1e-3
+      - 5e-3
+    batch_size:
+      - 32
+      - 64

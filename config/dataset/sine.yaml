@@ -1,0 +1,13 @@
+# @package _global_
+dataset:
+  _target_: src.data.Sine  # Will be dynamically instantiated
+  name: sine
+  collection: False
+  train_test_splitted: True
+
+  n_samples_train: 1000
+  n_samples_test: 1000
+  mode: normal
+
+model:
+  dim_cov: 2
