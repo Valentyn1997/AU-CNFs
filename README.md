@@ -80,6 +80,16 @@ One needs to specify a dataset/dataset generator (and some additional parameters
 
 ### Examples
 
+Example of running an experiment with our AU-CNFs (CRPS) on Synthetic data in the normal setting with $n_{\text{train}} = 100$ with 3 random seeds:
+```console
+PYTHONPATH=. python3 runnables/train.py -m +dataset=sine +model=dr_cnfs +model/sine_hparams/plugin_cnfs_normal=\'100\' model.target_mode=cdf model.correction_coeff=0.25 exp.seed=10,101,1010
+```
+
+Example of tuning hyperparameters of the CNF based on HC-MNIST dataset:
+```console
+PYTHONPATH=. python3 runnables/train.py -m +dataset=hcmnist +model=plugin_cnfs +model/hcmnist_hparams=plugin_cnfs exp.seed=10 model.tune_hparams=True
+```
+
 --------
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
