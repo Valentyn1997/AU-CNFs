@@ -1,6 +1,9 @@
 AU-learner with conditional normalizing flows
 ==============================
 
+[![Conference](https://img.shields.io/badge/NeurIPS24-Paper-blue])](https://proceedings.neurips.cc/paper_files/paper/2024/file/bdabb5d4262bcfb6a1d529d690a6c82b-Paper-Conference.pdf)
+[![arXiv](https://img.shields.io/badge/arXiv-2209.06203-b31b1b.svg)](https://arxiv.org/abs/2411.03387)
+
 Quantifying aleatoric uncertainty of the treatment effect with an AU-learner based on conditional normalizing flows (CNFs)
 
 <img width="1666" alt="Preview 2024-10-29 19 00 37" src="https://github.com/user-attachments/assets/d5b67bee-574f-4fc3-9bab-976a80a5ec47">
